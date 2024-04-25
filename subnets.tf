@@ -13,6 +13,16 @@ resource "aws_subnet" "public_subnet" {
 
 
 
+resource "aws_route_table_association" "public_subnet_rt_association" {
+  count = length(aws_subnet.public_subnet.*.id)
+  subnet_id      = element(aws_subnet.public_subnet.*.id, count.index)
+  route_table_id = aws_route_table.public_rt
+}
+
+
+
+
+
 
 resource "aws_subnet" "private_subnet" {
     count                   = length(var.PRIVATE_SUBNET_CIDR)
@@ -24,4 +34,12 @@ resource "aws_subnet" "private_subnet" {
   tags = {
     Name                    = "roboshop-${var.ENV}-private-subnet-${count.index+1}"
   }
+}
+
+
+
+resource "aws_route_table_association" "private_subnet_rt_association" {
+  count = length(aws_subnet.private_subnet.*.id)
+  subnet_id      = element(aws_subnet.private_subnet.*.id, count.index)
+  route_table_id = aws_route_table.private_rt
 }
