@@ -1,6 +1,9 @@
 resource "aws_eip" "ngw_ip" {
-  instance = aws_instance.web.id
   domain   = "vpc"
+
+    tags = {
+    Name = "roboshop-${var.ENV}-ngw-eip"
+  }
 }
 
 resource "aws_nat_gateway" "ngw" {
