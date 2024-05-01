@@ -33,3 +33,21 @@ output "DEFAULT_VPC_ID" {
 output "DEFAULT_VPC_CIDR" {
     value = var.DEFAULT_VPC_CIDR
 }
+
+
+
+output "PUBLIC_HOSTEDZONE_ID" {
+    value = var.PUBLIC_HOSTEDZONE_ID
+}
+
+output "PUBLIC_HOSTEDZONE_NAME" {
+    value = var.PUBLIC_HOSTEDZONE_NAME
+}
+
+output "PRIVATE_HOSTEDZONE_ID" {
+    value = var.PRIVATE_HOSTEDZONE_ID
+}
+
+output "PRIVATE_HOSTEDZONE_NAME" {
+    value = var.PRIVATE_HOSTEDZONE_NAME
+}
